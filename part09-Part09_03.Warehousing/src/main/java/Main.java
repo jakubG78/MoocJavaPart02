@@ -7,7 +7,6 @@ public class Main {
         juice.addToWarehouse(1.0);
 //System.out.println(juice.history()); // [1000.0, 988.7, 989.7]
 
-        juice.printAnalysis();
     }
 
 }

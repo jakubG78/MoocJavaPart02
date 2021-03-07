@@ -28,11 +28,10 @@ public class ChangeHistory {
     }
 
     public double minValue() {
-//        if (changeHistory.isEmpty()) {
-//            return 0;
-//        }
-        //double minValue = changeHistory.get(0);
-        double minValue = changeHistory.get(0);        
+        if (this.changeHistory.isEmpty()) {
+            return 0;
+        }
+        double minValue = changeHistory.get(0);
         for (double e : changeHistory) {
             if (e < minValue) {
                 minValue = e;
