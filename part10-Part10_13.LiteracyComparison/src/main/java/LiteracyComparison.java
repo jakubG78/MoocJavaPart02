@@ -9,25 +9,21 @@ public class LiteracyComparison {
 
     public static void main(String[] args) {
         List<LiteracyEntry> literacyList = new ArrayList<>();
-        
+
         try {
             Files.lines(Paths.get("literacy.csv"))
                     .map(row -> row.split(","))
-                    .map(parts -> new LiteracyEntry(parts[0], ageGroup, gender, country, 0, 0))
-                    .forEach(t -> System.out.println(t));
+                    .sorted((x, y) -> x[5].compareTo(y[5]))
+                    .map(parts -> new LiteracyEntry(parts[2].split(" ")[1].trim(), parts[3].trim(),
+                    Integer.valueOf(parts[4].trim()), Double.valueOf(parts[5].trim())))
+                    .forEach(entry -> literacyList.add(entry));
         } catch (IOException e) {
-        
+
             System.out.println("Error: " + e.getMessage());
         }
-
-//        String string = "Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513";
-//        String[] pieces = string.split(",");
-//        // now pieces[0] equals "Adult literacy rate"
-//        // pieces[1] equals " population 15+ years"
-//        // etc.
-//
-//        // to remove whitespace, use the trim() method:
-//        pieces[2] = pieces[2].split(" ")[1].trim();
-//        System.out.println(pieces[2]);
+                       
+        for (LiteracyEntry entry : literacyList) {
+            System.out.println(entry.toString());
+        }
     }
 }
