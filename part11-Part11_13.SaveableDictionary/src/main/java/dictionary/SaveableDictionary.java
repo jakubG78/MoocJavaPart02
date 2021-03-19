@@ -62,7 +62,7 @@ public class SaveableDictionary {
     public boolean save() {
         try {
             PrintWriter fileWriter = new PrintWriter(fileName);
-            saveWords(fileWriter);
+            savedWords(fileWriter);
             fileWriter.close();
             return true;
 
@@ -74,7 +74,7 @@ public class SaveableDictionary {
         }
     }
 
-    private void saveWords(PrintWriter writer) throws IOException {
+    private void savedWords(PrintWriter writer) throws IOException {
 
         List<String> allreadySaved = new ArrayList<>();
 
